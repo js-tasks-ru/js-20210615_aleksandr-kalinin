@@ -5,5 +5,12 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
+  const arrCopy = [...arr];
+  const sortingTypeOrder = param === 'desc' ? -1 : 1;
 
+  arrCopy.sort((a, b) => {
+    return a.localeCompare(b, ['ru-RU', 'en-GB'], { caseFirst: 'upper' }) * sortingTypeOrder;
+  });
+
+  return arrCopy;
 }
