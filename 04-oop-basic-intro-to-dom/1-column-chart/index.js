@@ -68,7 +68,7 @@ export default class ColumnChart {
 
     const headerTemplate = this._value
       ? `<div data-element="header" class="column-chart__header">${this._formatHeading(this._value)}</div>`
-      : ''
+      : '';
 
     const columnTemplate = this._getColumnTemplate();
 
