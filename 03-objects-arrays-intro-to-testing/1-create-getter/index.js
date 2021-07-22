@@ -8,14 +8,14 @@ export function createGetter(path) {
 
   return (obj) => {
     if (!obj) {
-      return undefined;
+      return;
     }
 
     let objCopy = { ...obj };
 
     for (const key of arrPath) {
       if (objCopy[key] === undefined) {
-        return undefined;
+        return;
       }
 
       objCopy = objCopy[key];
