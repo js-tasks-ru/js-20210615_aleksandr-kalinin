@@ -73,8 +73,13 @@ export default class SortableTable {
     };
   }
 
-  _getOrderNumber(order) {
-    return order === ORDER.DESC ? -1 : 1;
+  _getSortDirection(order) {
+    const directions = {
+      asc: 1,
+      desc: -1,
+    };
+
+    return directions[order];
   }
 
   _getSortType(field) {
@@ -89,7 +94,7 @@ export default class SortableTable {
 
   _sortByNumberField(arr, field, order = ORDER.ASC) {
     const arrCopy = [...arr];
-    const orderNumber = this._getOrderNumber(order);
+    const orderNumber = this._getSortDirection(order);
 
     arrCopy.sort((a, b) => {
       return (a[field] - b[field])  * orderNumber;
@@ -100,7 +105,7 @@ export default class SortableTable {
 
   _sortByStringField(arr, field, order = ORDER.ASC) {
     const arrCopy = [...arr];
-    const orderNumber = this._getOrderNumber(order);
+    const orderNumber = this._getSortDirection(order);
 
     arrCopy.sort((a, b) => {
       return a[field].localeCompare(b[field], ['ru-RU', 'en-GB'], { caseFirst: 'upper' }) * orderNumber;
