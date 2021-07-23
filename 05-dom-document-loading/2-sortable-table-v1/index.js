@@ -94,10 +94,10 @@ export default class SortableTable {
 
   _sortByNumberField(arr, field, order = ORDER.ASC) {
     const arrCopy = [...arr];
-    const orderNumber = this._getSortDirection(order);
+    const direction = this._getSortDirection(order);
 
     arrCopy.sort((a, b) => {
-      return (a[field] - b[field])  * orderNumber;
+      return (a[field] - b[field])  * direction;
     });
 
     return arrCopy;
@@ -105,10 +105,10 @@ export default class SortableTable {
 
   _sortByStringField(arr, field, order = ORDER.ASC) {
     const arrCopy = [...arr];
-    const orderNumber = this._getSortDirection(order);
+    const direction = this._getSortDirection(order);
 
     arrCopy.sort((a, b) => {
-      return a[field].localeCompare(b[field], ['ru-RU', 'en-GB'], { caseFirst: 'upper' }) * orderNumber;
+      return a[field].localeCompare(b[field], ['ru-RU', 'en-GB'], { caseFirst: 'upper' }) * direction;
     });
 
     return arrCopy;
